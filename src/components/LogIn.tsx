@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, TouchableOpacity, Text, Alert } from 'react-native';
+import { StyleSheet, View, TextInput, TouchableOpacity, Text, Alert, Dimensions } from 'react-native';
+
+const { width, height } = Dimensions.get('window');
+const iPhone14Width = 428;
+const iPhone14Height = 926;
+const widthRatio = width / iPhone14Width;
+const heightRatio = height / iPhone14Height;
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -9,9 +15,28 @@ const Login = () => {
     // Perform login logic here
     Alert.alert(`Logging in with username: ${username} and password: ${password}`);
   }
+  const handleFacebookLogin = () => {
+    // Perform facebook login logic here
+    Alert.alert(`Logging in with facebook`);
+  }
+  const handleAppleLogin = () => {
+    // Perform apple login logic here
+    Alert.alert(`Logging in with apple`);
+  }
+  const handleGoogleLogin = () => {
+    // Perform google login logic here
+    Alert.alert(`Logging in with google`);
+  }
+  const handleSignUp = () => {
+    // Perform google login logic here
+    Alert.alert(`Sign Up`);
+  }
 
   return (
     <View style={styles.container}>
+      <Text style={styles.headerText}>Munch ArtPoint</Text>
+      <Text style={styles.labelText}>Username / Email</Text>
+      <Text style={styles.label2Text}>Password</Text>
       <TextInput
         value={username}
         onChangeText={setUsername}
@@ -26,7 +51,19 @@ const Login = () => {
         style={styles.input}
       />
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text>Login</Text>
+        <Text style={styles.buttonText}>Login</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.facebookButton} onPress={handleFacebookLogin}>
+        <Text style={styles.facebookButtonText}>Login with Facebook</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.appleButton} onPress={handleAppleLogin}>
+        <Text style={styles.appleButtonText}>Login with Apple</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.googleButton} onPress={handleGoogleLogin}>
+        <Text style={styles.googleButtonText}>Login with Google</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.signUpButton} onPress={handleSignUp}>
+        <Text style={styles.signUpButtonText}>Sign Up</Text>
       </TouchableOpacity>
     </View>
   );
@@ -37,26 +74,90 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#ecf0f1',
   },
   input: {
-    width: 200,
-    height: 44,
-    padding: 10,
+    width: widthRatio * 350,
+    height: widthRatio * 40,
+    padding: widthRatio * 10,
     borderWidth: 1,
-    borderColor: 'black',
-    marginBottom: 10,
+    borderColor: 'white',
+    backgroundColor: 'white',
+    marginBottom: widthRatio * 50,
+    borderRadius: widthRatio * 10,
+  },
+  labelText: {
+    color: 'white',
+    fontSize: widthRatio * 18,
+    right: widthRatio * 125,
+    top: widthRatio * 15,
+  },
+  label2Text: {
+    color: 'white',
+    fontSize: widthRatio * 18,
+    right: widthRatio * 150,
+    top: widthRatio * 90,
+  },
+  headerText: {
+    color: '#EA4C2B',
+    fontSize: widthRatio * 40,
+    height: widthRatio * 100,
   },
   button: {
-    width: 200,
-    height: 44,
-    backgroundColor: 'blue',
+    position: 'absolute',
+    width: widthRatio * 151,
+    height: widthRatio * 31,
+    left: widthRatio * 95,
+    top: widthRatio * 510,
+    backgroundColor: '#EA4C2B',
     justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: 'black',
-    marginBottom: 10,
+    borderRadius: widthRatio * 20,
   },
+  buttonText: {
+    color: 'white',
+    left: widthRatio * 55,
+  },
+  facebookButton: {
+    width: widthRatio * 350,
+    height: widthRatio * 45,
+    top: widthRatio * 80,
+    backgroundColor: '#4B4848',
+    borderRadius: widthRatio * 10,
+  },
+  facebookButtonText: {
+    color: 'white',
+    padding: widthRatio * 10,
+  },
+  appleButton: {
+    width: widthRatio * 350,
+    height: widthRatio * 45,
+    top: widthRatio * 90,
+    backgroundColor: '#4B4848',
+    borderRadius: widthRatio * 10,
+  },
+  appleButtonText: {
+    color: 'white',
+    padding: widthRatio * 10,
+  },
+  googleButton: {
+    width: widthRatio * 350,
+    height: widthRatio * 45,
+    top: widthRatio * 100,
+    backgroundColor: '#4B4848',
+    borderRadius: widthRatio * 10,
+  },
+  googleButtonText: {
+    color: 'white',
+    padding: widthRatio * 10,
+  },
+  signUpButton: {
+    top: widthRatio * 120,
+    right: widthRatio * 150,
+    color: 'white',
+  },
+  signUpButtonText: {
+    color: 'white',
+    textDecorationLine: 'underline',
+  }
 });
 
 export default Login;

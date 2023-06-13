@@ -16,20 +16,18 @@ const ArtworkFeed = () => {
 
 
   const data: Artwork[] = [
-    { id: '1', userName: 'User1', artwork: {uri: 'https://pyxis.nymag.com/v1/imgs/783/7d4/1f37907ef1e50323c302294a7d3ab235e1-17-yesterdaynite-black-history-memes.rsquare.w330.jpg', width: 100, height: 100} },
-    { id: '2', userName: 'User2', artwork: {uri: 'https://brignews.com/wp-content/uploads/2020/12/meme-article-picture-3.jpg', width: 100, height: 100} },
-    { id: '1', userName: 'User1', artwork: {uri: 'https://render.fineartamerica.com/images/images-profile-flow/400/images-medium-large-5/2-nicolas-cage-a-vampires-kiss-watercolor-art-olga-shvartsur.jpg', width: 100, height: 100} },
-    { id: '2', userName: 'User2', artwork: {uri: 'https://s.yimg.com/ny/api/res/1.2/MiJoXmmpPQM25moPdksu6A--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD05NzE-/https://media.zenfs.com/en-US/homerun/time_72/a23c1927a7a9878a5fcd57c776c3af13', width: 100, height: 100} },
-
-
+    { id: '1', userName: '@ArtsyJim', artwork: {uri: 'https://pyxis.nymag.com/v1/imgs/783/7d4/1f37907ef1e50323c302294a7d3ab235e1-17-yesterdaynite-black-history-memes.rsquare.w330.jpg', width: 400, height: 400} },
+    { id: '2', userName: '@ShenayaArt', artwork: {uri: 'https://brignews.com/wp-content/uploads/2020/12/meme-article-picture-3.jpg', width: 400, height: 400} },
+    { id: '1', userName: '@Calvin01', artwork: {uri: 'https://render.fineartamerica.com/images/images-profile-flow/400/images-medium-large-5/2-nicolas-cage-a-vampires-kiss-watercolor-art-olga-shvartsur.jpg', width: 400, height: 400} },
+    { id: '2', userName: '@PeteCasso', artwork: {uri: 'https://s.yimg.com/ny/api/res/1.2/MiJoXmmpPQM25moPdksu6A--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD05NzE-/https://media.zenfs.com/en-US/homerun/time_72/a23c1927a7a9878a5fcd57c776c3af13', width: 400, height: 400} },
 
   ];
 
   const uploadImage = async () => {
     const options = {
         mediaType: 'photo' as MediaType,
-        maxWidth: 300,
-        maxHeight: 300,
+        maxWidth: 400,
+        maxHeight: 400,
         quality: 1 as PhotoQuality,
       };
 
@@ -49,7 +47,7 @@ const ArtworkFeed = () => {
     
           setUploadedImages([
             ...uploadedImages,
-            { id: Math.random().toString(), userName: 'User3', artwork: {uri: sourceUri, width: 300, height: 300} },
+            { id: Math.random().toString(), userName: 'User3', artwork: {uri: sourceUri, width: 400, height: 400} },
           ]);
         } else {
           console.log('No image URI found');
@@ -82,6 +80,7 @@ const ArtworkFeed = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Text style={styles.headerText}>Munch ArtPoint</Text>
       <TextInput
         style={styles.input}
         placeholder="Search..."
@@ -120,20 +119,29 @@ const styles = StyleSheet.create({
     flex: 1,
     marginVertical: 20,
   },
+  headerText: {
+    color: '#EA4C2B',
+    fontSize: 30,
+    height: 35,
+    left: 80,
+
+  },
   input: {
-    height: 40,
+    height: 60,
     margin: 12,
     borderWidth: 1,
     padding: 10,
     borderRadius: 10
   },
   item: {
-    backgroundColor: '#312F2F',
-    padding: 20,
+    backgroundColor: 'black',
+    padding: 50,
     marginVertical: 8,
     marginHorizontal: 16,
     borderRadius: 10,
+    alignItems: 'center',
   },
+  
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -144,14 +152,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#EA4C2B',
     padding: 10,
     width: '32%',
-    borderRadius: 20,
+    borderRadius: 50,
   },
   navbar: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    borderTopWidth: 1,
-    borderColor: 'gray',
-    margin: 20
+    borderTopWidth: 50, 
+    borderTopColor: 'grey',
+    margin: 3, 
+
+    
   }}
   );
 
